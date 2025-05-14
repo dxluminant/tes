@@ -38,7 +38,7 @@ async def delete_old_posts():
 
         for item in data:
             post_time = datetime.fromisoformat(item['time'])
-            if now - post_time > timedelta(minutes=1):
+            if now - post_time > timedelta(minutes=15):
                 try:
                     await bot.delete_message(chat_id=CHANNEL_ID, message_id=item['id'])
                     delete_message(item['id'])
